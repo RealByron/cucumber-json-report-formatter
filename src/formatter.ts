@@ -24,7 +24,7 @@ export class Formatter {
             const feature = gherkinDocument.feature
             const scenarios = feature.children
             const scenariosJson: any [] = []
-            let background = {}
+            let background = undefined
     
             scenarios.forEach(child => {
                 let steps: any = []		
@@ -44,7 +44,7 @@ export class Formatter {
                         steps.push(stepJson)
                     })
                     const scenario = this.createScenarioJson(feature, child.scenario, steps, "scenario")
-                    if (Object.keys(background).length !== 0 && background !== undefined) {                             
+                    if (backround !== undefined) {                             
                         scenariosJson.push(background);
                     } 
                     scenariosJson.push(scenario)
@@ -65,7 +65,7 @@ export class Formatter {
                             steps.push(stepJson)
                         }		
                         const scenario = this.createScenarioJson(feature, child.scenario, steps, "scenario", scenarioIndex)
-                        if (Object.keys(background).length !== 0 && background !== undefined) {                                   
+                        if (backround !== undefined) {                                   
                             scenariosJson.push(background);
                         } 
                         scenariosJson.push(scenario)
